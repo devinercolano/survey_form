@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% load static %}
 	<title>Submitted Info</title>
     <link rel="stylesheet" href="{% static 'survey_form_app/style.css' %}" media="screen" title="no title"  charset="utf-8">
 </head>
 <body>
+    <div class="times_display">
+        {{count}}
+    </div>
+
     <div class="container">
         <span class="title">Submitted Info</span>
-        <label>Name: </label> <p>{{request.session.name}}</p>
-        <label>Dojo Location: </label><p>{{request.session.city]}}</p>
-        <label>Favorite Language: </label> <p>{{request.session.language}}</p>
-        <label>comment: </label> <p>{{request.session.comment}}</p>
+        <label>Name: </label> <p> {{request.session.name}}</p><br>
+        <label>Dojo Location: </label> <p> {{request.session.city}}</p><br>
+        <label>Favorite Language: </label> <p> {{request.session.language}}</p><br>
+        <label>comment: </label> <p> {{request.session.comment}}</p>
+        <form action='/goback' method='post'>
+            {% csrf_token %}
+            <input type="submit" value="Go Back">
+        </form>
     </div>
 </body>
 </html>
